@@ -1,1 +1,14 @@
 .vs/Web/v16/.suo
+bin/Debug/netcoreapp3.1/Web.dll
+bin/Debug/netcoreapp3.1/Web.pdb
+bin/Debug/netcoreapp3.1/Web.Views.dll
+bin/Debug/netcoreapp3.1/Web.Views.pdb
+Controllers/ServicesController.cs
+obj/Debug/netcoreapp3.1/Web.csproj.CoreCompileInputs.cache
+obj/Debug/netcoreapp3.1/Web.csproj.FileListAbsolute.txt
+obj/Debug/netcoreapp3.1/Web.csprojAssemblyReference.cache
+obj/Debug/netcoreapp3.1/Web.dll
+obj/Debug/netcoreapp3.1/Web.pdb
+obj/Debug/netcoreapp3.1/Web.RazorCoreGenerate.cache
+obj/Debug/netcoreapp3.1/Web.Views.dll
+obj/Debug/netcoreapp3.1/Web.Views.pdb
