@@ -15,13 +15,15 @@
             <div id="feedback-item-wrapper" class="col-md-4 feedback-item @bg_css">
                 <div class="feedback-content">
                     <span>
-                        <em>
                             <span>@if (Model.ShowFullStories)
-                                Html.Raw(story.FullStory);
+                            {
+                                <em>@story.FullStory;</em>
+                            }
                             else
-                                Html.Raw(story.ShortStory);
+                            {
+                                <em>@story.ShortStory;</em>
+                            }
                             </span>
-                        </em>
                         <br />
                         <strong class="@name_css">@story.ClientName</strong>
                     </span>

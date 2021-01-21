@@ -82,3 +82,9 @@ E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Meet.csht
 E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Stories.cshtml.g.cs
 E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\MyMission.cshtml.g.cs
 E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\About\Index.cshtml.g.cs
+E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\About\AboutBP.cshtml.g.cs
+E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\About\AboutIrina.cshtml.g.cs
+E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\About\HelpingYouCopy.cshtml.g.cs
+E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\About\AboutBPCopy.cshtml.g.cs
+E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\About\ImageGallery.cshtml.g.cs
+E:\Projects\BodiesPilates\Web\obj\Debug\netcoreapp3.1\Razor\Views\About\TwoColumnCopy.cshtml.g.cs
