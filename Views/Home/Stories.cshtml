@@ -1,0 +1,43 @@
+﻿@model Web.Models.StoriesViewModel
+
+<div class="container section-header">
+    <h2>What My Amazing Clients Say</h2>
+</div>
+@ViewBag.Name
+<div class="container feedbacks-container">
+    <div class="row">
+        @{ 
+            string bg_css = "bg-red";
+            string name_css = Model.ShowFullStories ? "right-bottom" : "align-bottom";
+         } 
+        @foreach (var story in Model.Stories)
+        {
+            <div id="feedback-item-wrapper" class="col-md-4 feedback-item @bg_css">
+                <div class="feedback-content">
+                    <span>
+                        <em>
+                            <span>@if (Model.ShowFullStories)
+                                Html.Raw(story.FullStory);
+                            else
+                                Html.Raw(story.ShortStory);
+                            </span>
+                        </em>
+                        <br />
+                        <strong class="@name_css">@story.ClientName</strong>
+                    </span>
+                </div>
+            </div>
+            if (bg_css == "bg-red")
+                bg_css = "bg-blue";
+            else
+                bg_css = "bg-red";
+        }
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="section-header">
+        <a class="action-button black-reverse-button" href="/success-stories">READ MORE STORIES</a>
+    </div>
+</div>

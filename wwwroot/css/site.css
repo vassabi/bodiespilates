@@ -1,0 +1,348 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+/* Navigation bar
+-------------------------------------------------- */
+.navbar-brand img {
+    overflow: hidden;
+    max-width: 300px;
+    max-height: 60px;
+}
+
+.nav-wrap {
+    background-color: #fff;
+}
+
+.bp-navbar li a {
+    display: block;
+    padding: 12px 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    -webkit-transition: opacity 300ms ease;
+    -moz-transition: opacity 300ms ease;
+    -ms-transition: opacity 300ms ease;
+    transition: opacity 300ms ease;
+    color: black;
+}
+
+.bp-navbar li :hover {
+    background-color: transparent;
+}
+
+.bp-navbar li a.icon {
+    padding: 5px 15px 5px 15px;
+}
+
+/* Body Content
+-------------------------------------------------- */
+.body-content {
+    width: 100%;
+    margin-top: 100px;
+}
+
+/* Home page main banner
+-------------------------------------------------- */
+
+.main-banner {
+    background-image: url(/images/1664294940.jpg);
+    width: 100%;
+    background-repeat: no-repeat;
+    height: 750px;
+    background-position: center;
+    background-size: cover;
+    background-position-y: bottom;
+}
+
+.banner-content {
+    height: auto;
+    text-align: center;
+    margin: auto;
+    padding-top: 220px;
+    max-width: 800px;
+    color: white;
+}
+
+    .banner-content h2, .banner h2 {
+        color: inherit;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 60px;
+        font-weight: 700;
+        margin: 15px auto;
+        line-height: 80px;
+        color: white;
+    }
+
+    .banner-content p {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        margin: 15px auto;
+    }
+
+@media screen and (max-width: 767px) {
+    .banner-content h2 {
+        font-size: 1.6em;
+        line-height: 1.2em;
+    }
+
+    .main-banner {
+        height: 300px;
+    }
+
+    .banner-content {
+        padding-top: 60px;
+    }
+}
+
+/* Action Buttons
+-------------------------------------------------- */
+
+.action-button {
+    display: inline-block;
+    height: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    border: 2px solid transparent;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    border-radius: 30px;
+    font-size: 13px;
+}
+
+.black-reverse-button {
+    color: #000;
+    border-color: #000;
+}
+
+    .black-reverse-button:hover {
+        background-color: #000;
+        color: #fff;
+    }
+
+.black-button {
+    background-color: #000;
+    color: #fff;
+}
+
+    .black-button:hover {
+        background-color: transparent;
+        border: 2px solid #000;
+        color: #000;
+    }
+
+.red-button {
+    border: 2px solid #fff;
+    background-color: #fd8181;
+    color: #fff;
+}
+
+    .red-button:hover {
+        background-color: #fe9a9a;
+        color: #fff;
+    }
+
+.white-button {
+    color: #000;
+    border: 2px solid #fff;
+}
+
+    .white-button:hover {
+        background-color: transparent;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+
+.action-button:hover {
+    text-decoration: none;
+}
+
+/* Sections
+-------------------------------------------------- */
+
+.section-header {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+.section-content {
+    margin-bottom: 50px;
+}
+
+    .section-header h2, .section-content h2 {
+        margin-top: 25px;
+        font-size: 30px;
+        font-weight: 600;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+.section-center {
+    text-align: center;
+}
+
+.gradient-container h2 {
+    padding-top: 40px;
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.section-header p, .section-content p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 0 auto 10px;
+    color: #6f6f6f;
+}
+
+.section-content-img-container img {
+    width: auto;
+    max-width: 100%
+}
+
+/* Feedbacks/Stories
+-------------------------------------------------- */
+.feedbacks-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.feedback-item {
+    box-model: border-box;
+    border: 15px solid transparent;
+    background-clip: padding-box;
+    padding: 25px;
+    color: #fff;
+}
+
+.feedback-content, .image-content {
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.feedback-item em:before {
+    position: absolute;
+    content: '\201C';
+    font-size: 2em;
+    line-height: 1;
+    font-weight: bold;
+    margin-left: -20px
+}
+
+.align-bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 35px;
+}
+
+/* Background colored blocks
+-------------------------------------------------- */
+
+.bg-orange {
+    background-color: #f6cf00;
+}
+
+.bg-red {
+    background-color: #fd8181;
+}
+
+.bg-blue {
+    background-color: #6988a5;
+}
+
+.bg-gradient {
+    background: linear-gradient(91deg, #FD8181 0%, #F6CF00 100%);
+}

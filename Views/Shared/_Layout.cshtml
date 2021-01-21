@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:site_name" content="BODIES PILATES" />
+    <meta property="og:title" content="Online Pilates Classes by Bodies Pilates" />
+    <meta property="og:description" content="Take the struggle out of getting fit by learning Pilates and falling in love with movement." />
+    <meta property="og:url" content="https://www.bodiespilates.com/" />
+    <meta name="description" content="Take the struggle out of getting fit by learning Pilates and falling in love with movement." />
+    <meta name="keywords" content="pilates, online pilates studio, group pilates classes, private pilates sessions, corporate wellness, pilates instructor irina aghajanyan" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+    <link href='//fonts.googleapis.com/css?family=Varela+Round&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+    <link href='//fonts.googleapis.com/css?family=Bitter:400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,700,400italic,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+
+    <title>@ViewData["Title"] - BODIES PILATES</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="nav-wrap fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img class="logo" src="/images/bp-logo-500x100.png" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="nav navbar-nav navbar-right bp-navbar">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Services">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Stories">Success Stories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="body-content">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="row row-eq-height">
+                <div class="col-sm-3">
+                    <h3>Services</h3>
+                    <a href="/Services">Move More Online Studio</a><br />
+                    <a href="/Services">1:1 Pilates Sessions</a><br />
+                    <a href="/Services">Online Group Pilates</a>
+                </div>
+                <div class="col-sm-3">
+                    <h3>Company</h3>
+                    <a href="/About">About</a><br />
+                    <a href="/PrivacyPolicy">Privacy Policy</a><br />
+                    <a href="/TermsConditions">Terms and Conditions</a>
+                </div>
+                <div class="col-sm-3">
+                    <h3>Support</h3>
+                    <a href="/Contact">Contact</a><br />
+                </div>
+                <div class="col-sm-3">
+                    <h3>Address</h3>
+                    28608 Lomo Dr.<br />
+                    Rancho Palos Verdes<br />
+                    ​CA 90275
+                </div>
+            </div>
+            <hr />
+            <div class="footer-copy">
+                <p>© COPYRIGHT 2021. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
