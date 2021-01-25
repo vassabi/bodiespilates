@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Web.Models;
 
 namespace Web.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    partial class AppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210124045545_InitialCreate.v.1.4")]
+    partial class InitialCreatev14
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,55 +178,6 @@ namespace Web.Migrations
                     b.ToTable("UserPayments");
                 });
 
-            modelBuilder.Entity("Web.Models.Video", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<int>("VideoCategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("VideoUrl")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VideoCategoryId");
-
-                    b.ToTable("Videos");
-                });
-
-            modelBuilder.Entity("Web.Models.VideoCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("DropBoxFolderName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("VideoCategories");
-                });
-
             modelBuilder.Entity("Web.Models.User", b =>
                 {
                     b.HasOne("Web.Models.Role", null)
@@ -241,15 +194,6 @@ namespace Web.Migrations
                         .HasForeignKey("UserId1");
                 });
 
-            modelBuilder.Entity("Web.Models.Video", b =>
-                {
-                    b.HasOne("Web.Models.VideoCategory", null)
-                        .WithMany("Videos")
-                        .HasForeignKey("VideoCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Web.Models.Role", b =>
                 {
                     b.Navigation("Users");
@@ -258,11 +202,6 @@ namespace Web.Migrations
             modelBuilder.Entity("Web.Models.User", b =>
                 {
                     b.Navigation("Payments");
-                });
-
-            modelBuilder.Entity("Web.Models.VideoCategory", b =>
-                {
-                    b.Navigation("Videos");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,47 @@
+﻿@model Web.Models.StoriesViewModel
+
+@{
+    ViewData["Title"] = "Success Stories";
+}
+<div class="container">
+    <div class="white-big-copy-section bg-orange section-content">
+        <h1>
+            Success Stories
+        </h1>
+        <p>What my amazing clients say</p>
+    </div>
+</div>
+<div class="container section-header">
+</div>
+<div class="container feedbacks-container">
+    <div class="row">
+        @{
+            string bg_css = "bg-red";
+            string name_css = Model.ShowFullStories ? "right-bottom" : "align-bottom";
+        }
+        @foreach (var story in Model.Stories)
+        {
+            <div id="feedback-item-wrapper" class="feedback-item @bg_css">
+                <div class="feedback-content">
+                    <span>
+                        @if (Model.ShowFullStories)
+                        {
+                            <em>@story.FullStory;</em>
+                        }
+                        else
+                        {
+                            <em>@story.ShortStory;</em>
+                        }
+                    </span>
+                    <br />
+                    <h2 class="right-bottom">@story.ClientName</h2>
+                </div>
+            </div>
+            if (bg_css == "bg-red")
+                bg_css = "bg-blue";
+            else
+                bg_css = "bg-red";
+        }
+
+    </div>
+</div>

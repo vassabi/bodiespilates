@@ -38,6 +38,7 @@ namespace Web.Models
         public DateTimeOffset DateLastLogin { get; set; }
 
         public int RoleId { get; set; }
+        public bool AgreeReceiveMaterials { get; set; }
 
         public List<UserPayment> Payments { get; set; }
     }

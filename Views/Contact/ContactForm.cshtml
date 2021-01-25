@@ -1,0 +1,42 @@
+﻿@model Web.Models.ContactFormViewModel
+
+@using (Html.BeginForm("Submit", "Contact", FormMethod.Post))
+{
+    <div class="form-card">
+        <div class="form-card-inner">
+
+            <div class="form-group"><h2>Contact Us</h2></div>
+            <div class="form-group"><em>* INDICATES REQUIRED FIELD</em></div>
+            @if (Model != null && !String.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-warning">
+                    @Html.DisplayFor(m => m.ErrorMessage)
+                </div>
+            }
+            <div class="form-group">NAME *</div>
+            <div class="form-row mb-4">
+                <div class="col">
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "First name", @Value = "Kaare" })
+                </div>
+                <div class="col">
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Last name" })
+                </div>
+            </div>
+            <div class="form-group">EMAIL *</div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">COMMENT *</div>
+            <div class="form-group">
+                @Html.TextAreaFor(m => m.Comment, new { @class = "form-control", @rows = 4 })
+            </div>
+            <div class="form-group">
+                @Html.CheckBoxFor(m => m.AgreeReceivingMaterials, new { @id = "chkAgreeReceiveMaterials" })
+                @Html.Label("I agree to receiving marketing and promotional materials *", "I agree to receiving marketing and promotional materials *", new { @for = "chkAgreeReceiveMaterials" })
+            </div>
+            <div class="form-group">
+                <button class="action-button black-reverse-button" type="submit">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+}

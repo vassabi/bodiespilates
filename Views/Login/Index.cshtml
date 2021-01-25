@@ -1,0 +1,41 @@
+﻿@model Web.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container section-header">
+    <h1>Login.</h1>
+</div>
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+    <div class="container">
+        <div class="form-card">
+            <div class="form-card-inner">
+                @if (Model != null && !String.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="alert alert-warning">
+                        @Html.DisplayFor(m => m.ErrorMessage)
+                    </div>
+                }
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email address" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
+                </div>
+                <div class="form-group">
+                    @Html.CheckBoxFor(m => m.RememberMe, new { @id = "chkRememberMe" })
+                    @Html.Label("Remember me", "Remember me", new { @for = "chkRememberMe" })
+                </div>
+                <button class="form-control btn btn-success" type="submit">Login</button>
+            </div>
+            <hr />
+            <p>
+                <a asp-area="" asp-controller="Register" asp-action="Index">Register</a>
+                if you dont't have an account.
+            </p>
+        </div>
+    </div>
+}

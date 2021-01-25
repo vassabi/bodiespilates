@@ -18,5 +18,7 @@ namespace Web.Models
         public DbSet<Story> Stories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserPayment> UserPayments { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<VideoCategory> VideoCategories { get; set; }
     }
 }

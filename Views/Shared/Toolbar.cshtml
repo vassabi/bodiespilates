@@ -1,0 +1,43 @@
+﻿@using System.Security.Claims;
+<ul class="nav navbar-nav navbar-right bp-navbar">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="Index">Services</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="SuccessStories" asp-action="Index">Success Stories</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+    </li>
+    @if (User.Identity.IsAuthenticated)
+    {
+        //If user is admin
+
+        <li class="nav-item dropdown">
+            <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">[@User.Identity.Name]</a>
+            <div class="dropdown-menu">
+                @if (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value == "1")
+                {
+                <a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="Index">Admin Area</a>
+                }
+                <a class="dropdown-item" asp-area="" asp-controller="MoveMore" asp-action="Index">Move More (Members Area)</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                </div>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                </li>
+            }
+    <li class="nav-item"><a runat="server" href="https://www.instagram.com/bodiespilates/" class="icon" target="_blank"><i class="fab fa-instagram-square fa-2x"></i></a></li>
+    <li class="nav-item"><a runat="server" href="https://www.youtube.com/channel/UClI8Z8ZhvHBs_RB7B_BQnGg" class="icon" target="_blank"><i class="fab fa-youtube fa-2x"></i></a></li>
+
+</ul>

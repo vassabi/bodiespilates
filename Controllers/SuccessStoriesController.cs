@@ -1,23 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Models;
 
 namespace Web.Controllers
 {
-    public class HomeController : Controller
+    public class SuccessStoriesController : Controller
     {
         private AppDataContext _dataContext;
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, AppDataContext context)
+        public SuccessStoriesController(AppDataContext context)
         {
             _dataContext = context;
-            _logger = logger;
         }
 
         public IActionResult Index()
@@ -26,17 +24,11 @@ namespace Web.Controllers
             return View(model);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View();
-        }
-
         public StoriesViewModel GetStoriesModel()
         {
             var model = new StoriesViewModel();
-            model.ShowFullStories = false;
-            model.Stories = _dataContext.Stories.Take(3).ToList();
+            model.ShowFullStories = true;
+            model.Stories = _dataContext.Stories.ToList();
             return model;
         }
     }

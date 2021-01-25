@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace Web.Models
 {
-    public class StoriesViewModel
+    public class ContactFormViewModel : Message
     {
-        public List<Story> Stories { get; set; }
-        public bool ShowFullStories { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

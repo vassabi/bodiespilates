@@ -1,0 +1,32 @@
+﻿@model Web.Models.ContactFormViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="container">
+    <div class="white-big-copy-section bg-orange section-content">
+        <h1>
+            Contact
+        </h1>
+        <p>Do you have any questions or want to discuss your goals? Email me!</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <partial name="ContactForm" />
+        </div>
+        <div class="col-md-7">
+            <h2>Tel</h2>
+            <strong><a href="tel:8186677134">818.667.7134</a></strong>
+            <hr />
+            <h2>Email</h2>
+            <strong><a href="mailto:bodiespilates20@gmail.com​">bodiespilates20@gmail.com​​</a></strong>
+            <div class="map-wrapper">
+                <iframe allowtransparency="true" frameborder="0" scrolling="no" style="width: 100%; height: 180px; margin-top: 10px; margin-bottom: 15px;" src="//www.weebly.com/weebly/apps/generateMap.php?map=google&amp;elementid=410943600385608140&amp;ineditor=0&amp;control=3&amp;width=auto&amp;height=180px&amp;overviewmap=0&amp;scalecontrol=0&amp;typecontrol=0&amp;zoom=15&amp;long=-118.3928732&amp;lat=33.7746585&amp;domain=www&amp;point=1&amp;align=1&amp;reseller=true"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
