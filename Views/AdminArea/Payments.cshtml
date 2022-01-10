@@ -1,0 +1,35 @@
+﻿@model Web.Models.AdminAreaViewModel
+
+@{
+    ViewData["Title"] = "Admin Area (Payments)";
+}
+
+<div class="container">
+    <div class="white-big-copy-section bg-orange section-content">
+        <h1>
+            Admin Area (Payments)
+        </h1>
+        <partial name="AdminToolbar" />
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Client</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Transaction Id</th>
+                <th scope="col">Payment Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payment in Model.Payments)
+            {
+                <tr>
+                    <td></td>
+                    <td>$ @payment.PaymentAmount</td>
+                    <td>@payment.TransactionId</td>
+                    <td>@payment.PaymentDate.ToString("dd MMM yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

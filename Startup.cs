@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Web.Models;
+using Web.Services;
 using Web.Settings;
 
 namespace Web
@@ -31,6 +32,19 @@ namespace Web
             .AddCookie(options =>
             {
             });
+            services.AddScoped<IEmailService, EmailService>();
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+        }
+
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<AppDataContext>().Database.Migrate();
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +52,7 @@ namespace Web
         {
             if (env.IsDevelopment())
             {
+                //InitializeDatabase(app);
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -53,14 +68,12 @@ namespace Web
 
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
         }
     }
 }

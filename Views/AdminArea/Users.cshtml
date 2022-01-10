@@ -1,0 +1,53 @@
+﻿@model Web.Models.AdminAreaViewModel
+@{
+    ViewData["Title"] = "Admin Area (Users)";
+}
+
+<div class="container">
+    <div class="white-big-copy-section bg-orange section-content">
+        <h1>
+            Admin Area (Users)
+        </h1>
+        <partial name="AdminToolbar" />
+    </div>
+    <table class="table table-striped table-bordered dt-responsive nowrap" id="tblUsers">
+        <thead>
+            <tr>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Email</th>
+                <th scope="col">Reg. Date</th>
+                <th scope="col">Last Login Date</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>@user.DateRegistered.ToString("dd MMM yyyy")</td>
+                    <td>@user.DateLastLogin.ToString("dd MMM yyyy")</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="btnActions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Actions
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnActions">
+                                <a class="dropdown-item" asp-action="EditUser" asp-controller="AdminArea" asp-route-id="@user.Id" type="button">Edit</a>
+                                <a class="dropdown-item">Payments</a>
+                                <a class="dropdown-item">Suspend User</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $('#tblUsers').dataTable({
+    });
+</script>  

@@ -16,11 +16,11 @@ namespace Web.Controllers
     public class RegisterController : Controller
     {
         private AppDataContext _dataContext;
-        private readonly IOptions<AppSettings> appSettings;
+        private readonly IOptions<AppSettings> _appSettings;
         public RegisterController(AppDataContext context, IOptions<AppSettings> app)
         {
             _dataContext = context;
-            appSettings = app;
+            _appSettings = app;
         }
 
         public IActionResult Index()
@@ -57,7 +57,7 @@ namespace Web.Controllers
                 return View(model);
             }
 
-            int passMinLenght = appSettings.Value.PasswordMinChar;
+            int passMinLenght = _appSettings.Value.PasswordMinChar;
             if (model.Password.Length < passMinLenght)
             {
                 model.RegistrationErrorMessage = "Password must be at least " + passMinLenght + " characters";

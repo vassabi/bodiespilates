@@ -8,5 +8,10 @@ namespace Web.Settings
     public class AppSettings
     {
         public int PasswordMinChar { get; set; }
+        public string AdminEmail { get; set; }
+        public string MailGunAPIKey { get; set; }
+        public string PaypalBPOnlineMonthlyPlanLink { get; set; }
+        public string PaypalBPOnlineYearyPlanLink { get; set; }
+        public string PaypalIPNVerificationUrl { get; set; }
     }
 }

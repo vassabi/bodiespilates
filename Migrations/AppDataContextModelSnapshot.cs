@@ -19,6 +19,36 @@ namespace Web.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
+            modelBuilder.Entity("Web.Models.AppSetting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("AdminEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdminName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SmtpEnableSsl")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SmtpHost")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SmtpPort")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppSettings");
+                });
+
             modelBuilder.Entity("Web.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -54,6 +84,24 @@ namespace Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("Web.Models.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Answer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("Web.Models.Role", b =>
@@ -97,6 +145,29 @@ namespace Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stories");
+                });
+
+            modelBuilder.Entity("Web.Models.Subscribtion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTimeOffset>("SubscribtionDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("SubscribtionExpirationDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Subscribtions");
                 });
 
             modelBuilder.Entity("Web.Models.User", b =>
@@ -143,6 +214,9 @@ namespace Web.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("Suspended")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
@@ -152,7 +226,7 @@ namespace Web.Migrations
 
             modelBuilder.Entity("Web.Models.UserPayment", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -164,14 +238,15 @@ namespace Web.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("TransactionId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId1")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserPayments");
                 });
@@ -210,10 +285,10 @@ namespace Web.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("DropBoxFolderName")
+                    b.Property<string>("GroupName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -223,6 +298,15 @@ namespace Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("VideoCategories");
+                });
+
+            modelBuilder.Entity("Web.Models.Subscribtion", b =>
+                {
+                    b.HasOne("Web.Models.User", null)
+                        .WithMany("Subscribtions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Web.Models.User", b =>
@@ -238,7 +322,9 @@ namespace Web.Migrations
                 {
                     b.HasOne("Web.Models.User", null)
                         .WithMany("Payments")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Web.Models.Video", b =>
@@ -258,6 +344,8 @@ namespace Web.Migrations
             modelBuilder.Entity("Web.Models.User", b =>
                 {
                     b.Navigation("Payments");
+
+                    b.Navigation("Subscribtions");
                 });
 
             modelBuilder.Entity("Web.Models.VideoCategory", b =>

@@ -6,19 +6,20 @@ namespace Web.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "AgreeReceiveMaterials",
-                table: "Users",
-                type: "bit",
+            migrationBuilder.AddColumn<string>(
+                name: "GroupName",
+                table: "VideoCategories",
+                type: "nvarchar(10)",
+                maxLength: 10,
                 nullable: false,
-                defaultValue: false);
+                defaultValue: "");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "AgreeReceiveMaterials",
-                table: "Users");
+                name: "GroupName",
+                table: "VideoCategories");
         }
     }
 }

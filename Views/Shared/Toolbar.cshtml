@@ -24,9 +24,9 @@
             <div class="dropdown-menu">
                 @if (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value == "1")
                 {
-                <a class="dropdown-item" asp-area="" asp-controller="Contact" asp-action="Index">Admin Area</a>
+                <a class="dropdown-item" asp-area="" asp-controller="AdminArea" asp-action="Index">Admin Area</a>
                 }
-                <a class="dropdown-item" asp-area="" asp-controller="MoveMore" asp-action="Index">Move More (Members Area)</a>
+                <a class="dropdown-item" asp-area="" asp-controller="MoveMore" asp-action="Index">BP Online (Members Area)</a>
                 <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
                 </div>
                 </li>

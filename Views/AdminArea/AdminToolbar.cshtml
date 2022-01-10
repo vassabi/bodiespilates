@@ -1,0 +1,12 @@
+﻿@model Web.Models.AdminAreaViewModel
+
+
+<ul class="nav nav-pills nav-justified">
+    @foreach (var link in Model.Links)
+    {
+        var classActive = link.IsActive ? "active" : "";
+        <li class="nav-item">
+            <a class="nav-link @classActive" asp-controller="@link.Controller" asp-action="@link.Action">@link.Text</a>
+        </li>
+    }
+</ul>

@@ -20,5 +20,8 @@ namespace Web.Models
         public DbSet<UserPayment> UserPayments { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<VideoCategory> VideoCategories { get; set; }
+        public DbSet<AppSetting> AppSettings { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Subscribtion> Subscribtions { get; set; }
     }
 }

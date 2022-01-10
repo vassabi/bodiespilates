@@ -1,0 +1,43 @@
+﻿@model Web.Models.AdminAreaViewModel
+
+@{
+    ViewData["Title"] = "Admin Area (FAQ)";
+}
+
+<div class="container">
+    <div class="white-big-copy-section bg-orange section-content">
+        <h1>
+            Admin Area (FAQ)
+        </h1>
+        <partial name="AdminToolbar" />
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Question</th>
+                <th scope="col">Answer</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var question in Model.Questions)
+            {
+                <tr>
+                    <td>@question.Title</td>
+                    <td>@question.Answer</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="btnActions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Actions
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnActions">
+                                <button class="dropdown-item" type="button">Edit</button>
+                                <button class="dropdown-item" type="button">Delete</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

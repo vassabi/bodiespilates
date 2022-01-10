@@ -1,3 +1,28 @@
-﻿<div class="container text-center">
+﻿@model Web.Models.FAQViewModel
+
+<div class="container text-center">
     <h2>Frequently Asked Questions</h2>
 </div>
+@if (Model != null)
+{
+    <div class="accordion container" id="faq-accordion">
+        @foreach (Question question in Model.Questions)
+        {
+            <div class="accordion-item">
+                <div class="accordion-item-header" id="question-@question.Id">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#answer-@question.Id" aria-expanded="true" aria-controls="answer-@question.Id">
+                            @question.Title
+                        </button>
+                    </h2>
+                </div>
+                <div id="answer-@question.Id" class="collapse" aria-labelledby="question-@question.Id" data-parent="#faq-accordion">
+                    <div class="accordion-item-body">
+                        @question.Answer
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+

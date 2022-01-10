@@ -29,13 +29,16 @@
                     @Html.CheckBoxFor(m => m.RememberMe, new { @id = "chkRememberMe" })
                     @Html.Label("Remember me", "Remember me", new { @for = "chkRememberMe" })
                 </div>
-                <button class="form-control btn btn-success" type="submit">Login</button>
+                <div class="row">
+                    <div class="col-3">
+                        <button class="action-button black-button" type="submit">Login</button>
+                    </div>
+                    <div class="col-8 pt-2">
+                        <a asp-area="" asp-controller="Register" asp-action="Index">Register</a>
+                        if you dont't have an account.
+                    </div>
+                </div>
             </div>
-            <hr />
-            <p>
-                <a asp-area="" asp-controller="Register" asp-action="Index">Register</a>
-                if you dont't have an account.
-            </p>
         </div>
     </div>
 }

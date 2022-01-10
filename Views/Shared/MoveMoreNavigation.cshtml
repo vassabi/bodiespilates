@@ -1,0 +1,22 @@
+﻿@model Web.Models.MoveMoreViewModel
+
+<div class="white-big-copy-section bg-orange section-content">
+    <h1>
+        BP Online
+    </h1>
+    <div class="container">
+
+        @foreach (var group in Model.GroupedCategories)
+        {
+            <div class="row mb-2">
+                @foreach (var category in group)
+                {
+                    string currentPageCss = category.Id == Model.CurrentCategoryId ? "btn-primary" : "btn-outline-secondary";
+                    <div class="col-md">
+                        <a class="btn @currentPageCss btn-block" href="/MoveMore/Videos/@category.Id">@category.Name</a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

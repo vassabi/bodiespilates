@@ -16,8 +16,8 @@ namespace Web.Models
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        public string DropBoxFolderName { get; set; }
+        [MaxLength(10)]
+        public string GroupName { get; set; }
 
         public List<Video> Videos { get; set; }
     }

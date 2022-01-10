@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,6 +29,12 @@ namespace Web.Models
         [MaxLength(250)]
         public string PasswordHash { get; set; }
 
+        [NotMapped]
+        public string Password { get; set; }
+
+        [NotMapped]
+        public string RepeatPassword { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string Salt { get; set; }
@@ -35,11 +42,15 @@ namespace Web.Models
         [DefaultValue("getdate()")] 
         public DateTimeOffset DateRegistered { get; set; }
 
+        [DefaultValue(false)]
+        public bool Suspended { get; set; }
+
         public DateTimeOffset DateLastLogin { get; set; }
 
         public int RoleId { get; set; }
         public bool AgreeReceiveMaterials { get; set; }
 
         public List<UserPayment> Payments { get; set; }
+        public List<Subscribtion> Subscribtions { get; set; }
     }
 }

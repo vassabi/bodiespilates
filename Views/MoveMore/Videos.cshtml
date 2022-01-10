@@ -1,0 +1,25 @@
+﻿@model Web.Models.MoveMoreViewModel
+@{
+    ViewData["Title"] = "Move More Members";
+}
+
+<partial name="MoveMoreNavigation" />
+
+<div class="container">
+    <div class="row">
+        @{ int counter = 0; }
+        @foreach (var video in Model.Videos)
+        {
+            counter++;
+            <div class="col-md">
+                <iframe src="@video.VideoUrl" width="100%" height="350" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+            </div>
+            @if (counter % 2 == 0)
+            {
+                <div class="w-100"></div>
+            }
+        }
+    </div>
+</div>
+
+
