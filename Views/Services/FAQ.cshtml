@@ -1,4 +1,4 @@
-﻿@model Web.Models.FAQViewModel
+﻿@model Web.Models.ServicesViewModel
 
 <div class="container text-center">
     <h2>Frequently Asked Questions</h2>
@@ -6,7 +6,7 @@
 @if (Model != null)
 {
     <div class="accordion container" id="faq-accordion">
-        @foreach (Question question in Model.Questions)
+        @foreach (Question question in Model.FaqModel.Questions)
         {
             <div class="accordion-item">
                 <div class="accordion-item-header" id="question-@question.Id">

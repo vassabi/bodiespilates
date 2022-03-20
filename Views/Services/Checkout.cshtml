@@ -1,1 +1,46 @@
-﻿<a href="https://www.sandbox.paypal.com/webapps/billing/plans/subscribe?plan_id=P-9CD02270CV2025100MHNNBBQ">Checkout</a>
+﻿@model Web.Models.SubscribeFormViewModel;
+
+<div class="container text-center">
+    <h2>Your order details</h2>
+    <div class="row mb-3 form-card">
+        <div class="col">
+            @if (Model.SelectedPlan == "1")
+            {
+                <h3>BP Online Monthly <span class="badge badge-secondary">$25/Month</span></h3>
+                <small>SUBSCRIPTION WILL AUTOMATICALLY RENEW MONTHLY UNLESS OTHERWISE CANCELED BY YOU.</small>
+            }
+            @if (Model.SelectedPlan == "2")
+            {
+                <h3>BP Online Yearly <span class="badge badge-secondary">$250/Year</span></h3>
+                <small>SUBSCRIPTION WILL AUTOMATICALLY RENEW YEARLY UNLESS OTHERWISE CANCELED BY YOU.</small>
+            }
+            <hr />
+
+            <div id="paypal-button-container-P-1VT96103E5368991RMHNNB6Q"></div>
+            <script src="https://www.paypal.com/sdk/js?client-id=Ad0s6QnLSbCyS4ESNNMlAAwWsgixuuBr4RJE1mBdf67EQlGTZENRRat6pxKN2rZOO2h2gh706vB816-A&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+            <script>
+                paypal.Buttons({
+                    style: {
+                        shape: 'rect',
+                        color: 'blue',
+                        layout: 'horizontal',
+                        label: 'subscribe'
+                    },
+                    createSubscription: function (data, actions) {
+                        return actions.subscription.create({
+                            /* Creates the subscription */
+                            plan_id: 'P-1VT96103E5368991RMHNNB6Q',
+                            custom: 'XXZQQ'
+                        });
+                    },
+                    onApprove: function (data, actions) {
+                        debugger;
+                        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                    }
+                }).render('#paypal-button-container-P-1VT96103E5368991RMHNNB6Q'); // Renders the PayPal button
+            </script>
+            @*<a href="https://www.sandbox.paypal.com/webapps/billing/plans/subscribe?plan_id=P-9CD02270CV2025100MHNNBBQ" class="action-button black-button">Checkout with PayPal</a>*@
+
+        </div>
+    </div>
+</div>

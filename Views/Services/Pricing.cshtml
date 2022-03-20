@@ -1,4 +1,5 @@
 ﻿@using System.Security.Claims;
+@model Web.Models.ServicesViewModel;
 
 <div class="container">
     <div class="section-header">
@@ -40,7 +41,7 @@
                         </div>
 
                         <div class="section-header">
-                            <a id="paypal-button-container" class="action-button black-reverse-button" data-toggle="modal" data-target="#subscribeModal" href="#">START NOW</a>
+                            <a class="action-button black-reverse-button" data-toggle="modal" data-target="#subscribeModal" href="#">START NOW</a>
                         </div>
                     </div>
                 </div>
@@ -129,12 +130,6 @@
     </div>
 </section>
 
-@{
-    string ro = User.Identity.IsAuthenticated ? "readonly" : string.Empty;
-    string fname = @User.Identity.Name;
-    string lname = !User.Identity.IsAuthenticated ? string.Empty : @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname).Value;
-    string email = !User.Identity.IsAuthenticated ? string.Empty : @User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
-}
 <!-- Modal -->
 <div class="modal fade cust-modal" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -145,63 +140,69 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body cust-modal-body">
-                <div class="row mb-3">
-                    <div class="col">
-                        <span>Please select a plan</span>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="hidden" id="selectedPlan" value="" />
-                        <div class="list-group" id="plansList">
-                            <a href="#" onclick="selectPlan(1, this);" class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">BP Online Monthly</h5>
-                                    <small>$25/Month</small>
-                                </div>
-                                <small>SUBSCRIPTION WILL AUTOMATICALLY RENEW MONTHLY UNLESS OTHERWISE CANCELED BY YOU.</small>
-                            </a>
-                            <a href="#" onclick="selectPlan(2, this);" class="list-group-item list-group-item-action">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">BP Online Yearly</h5>
-                                    <small>$250/Year</small>
-                                </div>
-                                <small>SUBSCRIPTION WILL AUTOMATICALLY RENEW YEARLY UNLESS OTHERWISE CANCELED BY YOU.</small>
-                            </a>
+            @using (Html.BeginForm("Subscribe", "Services", FormMethod.Post))
+            {
+                <div class="modal-body cust-modal-body">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <span>Please select a plan</span>
                         </div>
                     </div>
-                    
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="subcFirstName">First name</label>
-                        <input type="text" class="form-control" id="subcFirstName" @ro value="@fname" placeholder="First name">
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            @Html.HiddenFor(m => m.SubscribeModel.SelectedPlan, new { @id = "selectedPlan" })
+                            <div class="list-group" id="plansList">
+                                <a href="#" onclick="selectPlan(1, this);" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">BP Online Monthly</h5>
+                                        <small>$25/Month</small>
+                                    </div>
+                                    <small>SUBSCRIPTION WILL AUTOMATICALLY RENEW MONTHLY UNLESS OTHERWISE CANCELED BY YOU.</small>
+                                </a>
+                                <a href="#" onclick="selectPlan(2, this);" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">BP Online Yearly</h5>
+                                        <small>$250/Year</small>
+                                    </div>
+                                    <small>SUBSCRIPTION WILL AUTOMATICALLY RENEW YEARLY UNLESS OTHERWISE CANCELED BY YOU.</small>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="col">
-                        <label for="subcLastName">Last name</label>
-                        <input type="text" class="form-control" id="subcLastName" @ro value="@lname" placeholder="Last name">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="subcEmail">Email</label>
-                        <input type="text" class="form-control" id="subcEmail" @ro value="@email" placeholder="Email">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="chkAcceptTerms">
-                            <label class="custom-control-label" for="chkAcceptTerms">I UNDERSTAND AND ACCEPT THE TERMS AND CONDITIONS, PRIVACY POLICY AND LIMITATION OF LIABILITY WAIVER OF BODIES PILATES *</label>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="subcFirstName">First name</label>
+                            @Html.TextBoxFor(m => m.SubscribeModel.FirstName, new { @class = "form-control", @placeholder = "First name", @id = "subcFirstName" })
+                        </div>
+                        <div class="col">
+                            <label for="subcLastName">Last name</label>
+                            @Html.TextBoxFor(m => m.SubscribeModel.LastName, new { @class = "form-control", @placeholder = "Last name", @id = "subcLastName" })
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="subcEmail">Email</label>
+                            @Html.TextBoxFor(m => m.SubscribeModel.Email, new { @class = "form-control", @placeholder = "Email", @id = "subcEmail" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                @Html.CheckBoxFor(m => m.SubscribeModel.AgreeTerms, new { @class = "custom-control-input", @id = "chkAcceptTerms" })
+                                <label class="custom-control-label" for="chkAcceptTerms">I UNDERSTAND AND ACCEPT THE TERMS AND CONDITIONS, PRIVACY POLICY AND LIMITATION OF LIABILITY WAIVER OF BODIES PILATES *</label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-            <div class="modal-footer bg-red">
-                <button type="button" class="action-button white-button" data-dismiss="modal">Close</button>
-                <button type="button" onclick="return validate();" class="action-button black-button">Proceed to checkout</button>
-            </div>
+                <div class="modal-footer bg-red">
+                    <button type="button" class="action-button white-button" data-dismiss="modal">Close</button>
+                    <button type="submit" onclick="return validate();" class="action-button black-button">Proceed to checkout</button>
+                </div>
+            }
         </div>
     </div>
 </div>
@@ -214,7 +215,7 @@
     }
     function validate() {
         var isValid = true;
-
+        debugger;
         if (!$("#selectedPlan").val()) {
             $("#plansList").addClass("error");
             isValid = false;

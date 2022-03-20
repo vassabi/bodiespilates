@@ -13,5 +13,6 @@ namespace Web.Settings
         public string PaypalBPOnlineMonthlyPlanLink { get; set; }
         public string PaypalBPOnlineYearyPlanLink { get; set; }
         public string PaypalIPNVerificationUrl { get; set; }
+        public string PDTIdentityToken { get; set; }
     }
 }
